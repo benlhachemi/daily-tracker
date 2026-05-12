@@ -7,7 +7,7 @@
 
  
 * 🎮 Live Demo: https://daily-habit-umber.vercel.app/
-* 📹 YouTube Tutorial: https://youtube.com
+* 📹 YouTube Tutorial: [https://youtube.com](https://youtu.be/U6cd310jHC8)
 * 👤 Creator: [@souhail_dev](https://x.com/souhail_dev)
   
 
