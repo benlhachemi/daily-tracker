@@ -1,0 +1,540 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@plugin "tailwindcss-motion";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Colors */
+  --background: oklch(97.02% 0.0015 253.83);
+  --foreground: oklch(21.03% 0.0015 253.83);
+  --card: oklch(100.00% 0.0008 253.83);
+  --card-foreground: oklch(21.03% 0.0015 253.83);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.147 0.004 49.3);
+  --primary: oklch(62.04% 0.1950 253.83);
+  --primary-foreground: oklch(99.11% 0 0);
+  --secondary: oklch(94.00% 0.0015 253.83);
+  --secondary-foreground: oklch(62.04% 0.1950 253.83);
+  --muted: oklch(94.00% 0.0015 253.83);
+  --muted-foreground: oklch(55.17% 0.0030 253.83);
+  --accent: oklch(94.00% 0.0015 253.83);
+  --accent-foreground: oklch(0.214 0.009 43.1);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(90.00% 0.0015 253.83);
+  --input: oklch(94.00% 0.0015 253.83);
+  --ring: oklch(62.04% 0.1950 253.83);
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.986 0.002 67.8);
+  --sidebar-foreground: oklch(0.147 0.004 49.3);
+  --sidebar-primary: oklch(0.646 0.222 41.116);
+  --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
+  --sidebar-accent: oklch(0.96 0.002 17.2);
+  --sidebar-accent-foreground: oklch(0.214 0.009 43.1);
+  --sidebar-border: oklch(0.922 0.005 34.3);
+  --sidebar-ring: oklch(0.714 0.014 41.2);
+  --segment: oklch(100.00% 0.0015 253.83);
+  --segment-foreground: oklch(21.03% 0.0015 253.83);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 40px;
+  --spacing-3xl: 64px;
+
+  /* Motion */
+  --ease-default: cubic-bezier(0.17,0.84,0.44,1);
+  --duration-default: 0.5s;
+  --transition-default: all var(--duration-default) var(--ease-default);
+}
+
+.dark {
+  --background: oklch(12.00% 0.0015 253.83);
+  --foreground: oklch(99.11% 0.0015 253.83);
+  --card: oklch(21.03% 0.0030 253.83);
+  --card-foreground: oklch(99.11% 0.0015 253.83);
+  --popover: oklch(21.03% 0.0030 253.83);
+  --popover-foreground: oklch(99.11% 0.0015 253.83);
+  --primary: oklch(62.04% 0.1950 253.83);
+  --primary-foreground: oklch(99.11% 0 0);
+  --secondary: oklch(27.40% 0.0015 253.83);
+  --secondary-foreground: oklch(62.04% 0.1950 253.83);
+  --muted: oklch(27.40% 0.0015 253.83);
+  --muted-foreground: oklch(70.50% 0.0030 253.83);
+  --accent: oklch(27.40% 0.0015 253.83);
+  --accent-foreground: oklch(0.986 0.002 67.8);
+  --destructive: oklch(59.40% 0.1973 24.63);
+  --border: oklch(28.00% 0.0015 253.83);
+  --input: oklch(21.03% 0.0030 253.83);
+  --ring: oklch(62.04% 0.1950 253.83);
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+  --sidebar: oklch(0.214 0.009 43.1);
+  --sidebar-foreground: oklch(0.986 0.002 67.8);
+  --sidebar-primary: oklch(0.705 0.213 47.604);
+  --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
+  --sidebar-accent: oklch(0.268 0.011 36.5);
+  --sidebar-accent-foreground: oklch(0.986 0.002 67.8);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.547 0.021 43.1);
+  --segment: oklch(39.64% 0.0015 253.83);
+  --segment-foreground: oklch(99.11% 0.0015 253.83);
+}
+
+@utility duration-default {
+  transition-duration: var(--duration-default);
+  animation-duration: var(--duration-default);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-segment: var(--segment);
+  --color-segment-foreground: var(--segment-foreground);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --spacing-root-xs: var(--spacing-xs);
+  --spacing-root-sm: var(--spacing-sm);
+  --spacing-root-md: var(--spacing-md);
+  --spacing-root-lg: var(--spacing-lg);
+  --spacing-root-xl: var(--spacing-xl);
+  --spacing-root-2xl: var(--spacing-2xl);
+  --spacing-root-3xl: var(--spacing-3xl);
+
+  --ease-default: var(--ease-default);
+  --transition-default: var(--transition-default);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-primary/50 tracking-tight no-scrollbar!;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ACCORDION */
+@layer {
+  [data-slot="accordion"] {
+    @apply border-0 rounded-none;
+  }
+
+  [data-slot="accordion-trigger"] {
+    @apply hover:no-underline;
+  }
+
+  [data-slot="accordion-content"] {
+    @apply text-muted-foreground;
+  }
+
+  [data-slot="accordion-item"][data-open] {
+    @apply bg-background;
+  }
+
+  [data-slot="accordion-trigger"][aria-expanded="false"] {
+    @apply hover:bg-muted/50;
+  }
+
+  [data-slot="accordion-content"][data-open] {
+    animation: root-accordion-down calc(var(--duration-default)*0.85) var(--ease-default) forwards!important;
+  }
+
+  [data-slot="accordion-content"][data-closed] {
+    animation: root-accordion-up var(--duration-default) var(--ease-default) forwards!important;
+  }
+
+  @keyframes root-accordion-down {
+    from {
+      height: 0;
+      filter: blur(4px);
+      opacity: 0;
+    }
+    to {
+      height: var(--accordion-panel-height);
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes root-accordion-up {
+    from {
+      height: var(--accordion-panel-height);
+      filter: blur(0px);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      filter: blur(4px);
+      opacity: 0;
+    }
+  }
+}
+
+/* AVATAR */
+@layer {
+  [data-slot="avatar"] {
+    @apply size-9;
+  }
+}
+
+/* BUTTON */
+@layer {
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  [data-slot="button"], 
+  [data-slot="dialog-close"], 
+  [data-slot="sheet-close"], 
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+    @apply active:not-aria-[haspopup]:translate-y-0 active:not-aria-[haspopup]:scale-[0.97] will-change-transform;
+    transition: 
+      scale 0.25s var(--ease-default),
+      background-color 0.1s ease-in-out,
+      color 0.1s ease-in-out
+      !important;
+  }
+}
+
+/* CARD */
+@layer {
+  [data-slot="card"] {
+    @apply shadow-sm ring-0;
+  }
+}
+
+/* CHECKBOX */
+@layer {
+  span[data-slot="checkbox"] {
+    @apply cursor-pointer shadow-sm bg-segment data-checked:bg-primary ease-default rounded-[6px] will-change-transform;
+    @apply data-checked:animate-in data-checked:fade-in data-checked:zoom-in-50;
+    @apply hover:opacity-85;
+    animation-duration: calc(var(--duration-default) * 0.7) !important;
+    transition: all var(--ease-out) 150ms !important;
+
+    &[aria-checked="false"] {
+      @apply hover:scale-105 ease-default hover:shadow-md;
+    }
+  }
+
+  span[data-slot="checkbox"] svg {
+    @apply stroke-[2.5px] size-3;
+  }
+}
+
+/* DIALOG */
+@layer {
+  [data-slot="dialog-content"][data-open] {
+    @apply zoom-in-105 blur-in-xs;
+    @apply duration-default ease-default;
+    @apply will-change-transform;
+  }
+
+  [data-slot="dialog-content"] {
+    @apply ring-0 isolate;
+  }
+}
+
+/* DROPDOWN MENU */
+@layer {
+  [data-slot="dropdown-menu-content"] {
+    @apply will-change-transform; /* improve animation performance */
+
+    /* open animation */
+    @apply data-open:animate-in data-open:fade-in data-open:zoom-in-100 data-open:blur-in-xs data-open:ease-default;
+    @apply data-open:animation-duration-[calc(var(--duration-default)*0.7)];
+
+    /* close animation */
+    @apply data-closed:animate-out data-closed:fade-out data-closed:zoom-out-100 data-closed:blur-in-xs data-closed:ease-default;
+    @apply data-closed:animation-duration-[calc(var(--duration-default)*0.5)];
+  }
+
+  [data-slot="dropdown-menu-item"] {
+    @apply cursor-pointer;
+  }
+}
+
+/* FIELD */
+@layer {
+  [data-slot="field-label"] {
+    @apply gap-1;
+    @apply [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
+  }
+}
+
+/* INPUT */
+@layer {
+  /* INPUT */
+  [data-slot="input"], [data-slot="input-group"] {
+    @apply h-10 bg-white dark:bg-input/50 hover:bg-neutral-100 dark:hover:bg-input/60 shadow-sm;
+    @apply has-[[data-slot=input-group-control]:focus-visible]:ring-primary;
+    @apply has-[[data-slot=input-group-control]:focus-visible]:ring-1;
+    @apply focus-visible:ring-offset-0 transition-colors duration-100 ease-default;
+    @apply focus-visible:ring-1 focus-visible:ring-primary;
+  }
+
+  [data-slot="input-group-control"] {
+    @apply border-0 ring-0 focus-visible:ring-0 aria-invalid:ring-0;
+  }
+
+  [data-slot="dialog-content"] [data-slot="input"],
+  [data-slot="card"] [data-slot="input"],
+  [data-slot="dialog-content"] [data-slot="input-group"],
+  [data-slot="dialog-content"] [data-slot="input-group"] {
+    @apply bg-input dark:bg-muted hover:bg-input/85 dark:hover:bg-segment/50 shadow-none;
+  }
+}
+
+/* POPOVER */
+@layer {
+  [data-slot="popover-content"] {
+    @apply will-change-transform; /* improve animation performance */
+
+    /* open animation */
+    @apply data-open:animate-in data-open:fade-in data-open:zoom-in-100 data-open:blur-in-xs data-open:ease-default;
+    @apply data-open:animation-duration-[calc(var(--duration-default)*0.7)];
+
+    /* close animation */
+    @apply data-closed:animate-out data-closed:fade-out data-closed:zoom-out-100 data-closed:blur-in-xs data-closed:ease-default;
+    @apply data-closed:animation-duration-[calc(var(--duration-default)*0.5)];
+  }
+}
+
+/* RADIO */
+@layer {
+  span[data-slot="radio-group-item"] {
+    @apply cursor-pointer shadow-sm bg-segment data-checked:bg-primary ease-default;
+    @apply hover:opacity-85;
+
+    transition: all var(--ease-out) 150ms !important;
+
+    &[aria-checked="false"] {
+      @apply hover:scale-105 ease-default hover:shadow-md;
+    }
+  }
+}
+
+/* SELECT */
+@layer {
+  [data-slot="select-content"] {
+    @apply will-change-transform; /* improve animation performance */
+
+    /* open animation */
+    @apply data-open:animate-in data-open:fade-in data-open:zoom-in-100 data-open:blur-in-xs data-open:ease-default;
+    @apply data-open:animation-duration-[calc(var(--duration-default)*0.7)];
+
+    /* close animation */
+    @apply data-closed:animate-out data-closed:fade-out data-closed:zoom-out-100 data-closed:blur-in-xs data-closed:ease-default;
+    @apply data-closed:animation-duration-[calc(var(--duration-default)*0.5)];
+  }
+
+  [data-slot="select-trigger"] {
+    @apply data-[size=default]:h-10 bg-segment dark:bg-input hover:bg-neutral-100 dark:hover:bg-muted shadow-sm;
+    @apply focus-visible:ring-offset-0;
+    @apply transition-colors duration-100 ease-default;
+  }
+
+  [data-slot="card"] [data-slot="select-trigger"],
+  [data-slot="dialog-content"] [data-slot="select-trigger"] {
+    @apply bg-input dark:bg-muted hover:bg-input/85 dark:hover:bg-segment/50 shadow-none;
+  }
+}
+
+/* SHEET */
+@layer {
+  [data-slot="sheet-content"] {
+    @apply duration-default ease-default;
+    @apply data-starting-style:blur-sm;
+    @apply data-ending-style:blur-sm data-ending-style:duration-250;
+    @apply data-[side=right]:data-ending-style:translate-x-16;
+    @apply data-[side=left]:data-ending-style:-translate-x-16;
+    @apply data-[side=top]:data-ending-style:-translate-y-16;
+    @apply data-[side=bottom]:data-ending-style:translate-y-16;
+    @apply border-l-0;
+  }
+}
+
+/* SPINNER */
+@layer {
+  svg[aria-label="Loading"][role="status"] {
+    @apply text-primary size-5 stroke-[2.5px];
+    animation-duration: 700ms!important;
+  }
+}
+
+/* SWITCH */
+@layer {
+  [data-slot="switch"] {
+    cursor: pointer;
+    @apply hover:opacity-85 hover:transition-opacity hover:duration-150;
+    @apply data-unchecked:bg-input;
+  }
+
+  [data-slot="switch-thumb"] {
+    transition: translate calc(var(--duration-default) * 0.7) var(--ease-default)!important;
+    @apply bg-white;
+  }
+}
+
+/* TABS */
+@layer {
+  *:not([data-variant="line"]) > [data-slot="tabs-trigger"] {
+    @apply data-active:shadow-sm;
+    @apply active:not-aria-[haspopup]:scale-100;
+    @apply data-active:bg-segment;
+  }
+
+  [data-variant="line"] > [data-slot="tabs-trigger"] {
+    @apply data-active:after:rounded-full;
+  }
+
+  [data-slot="tabs-trigger"]:not([aria-selected="true"]) {
+    @apply hover:text-muted-foreground/75 transition-colors duration-200;
+  }
+
+  [data-slot="tabs-list"] {
+    @apply group-data-horizontal/tabs:h-10;
+  }
+}
+
+/* STAGGERED ANIMATIONS */
+@layer {
+  .stagger-container {
+    @apply animate-in fade-in duration-700 ease-out fill-mode-backwards;
+  }
+
+  .stagger-item-1 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-75;
+  }
+
+  .stagger-item-2 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-100;
+  }
+
+  .stagger-item-3 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-150;
+  }
+
+  .stagger-item-4 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-200;
+  }
+
+  .stagger-item-5 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-300;
+  }
+
+  .stagger-item-6 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-400;
+  }
+
+  .stagger-item-7 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-500;
+  }
+
+  .stagger-item-8 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-600;
+  }
+
+  .stagger-item-9 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-700;
+  }
+
+  .stagger-item-10 {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-800;
+  }
+
+  /* For items beyond 10, use a generic delay */
+  .stagger-item-fallback {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out fill-mode-backwards delay-1000;
+  }
+
+  /* Horizontal stagger animations for date picker */
+  .stagger-horizontal-1 {
+    @apply animate-in fade-in slide-in-from-left-2 duration-400 ease-out fill-mode-backwards delay-50;
+  }
+
+  .stagger-horizontal-2 {
+    @apply animate-in fade-in slide-in-from-left-2 duration-400 ease-out fill-mode-backwards delay-75;
+  }
+
+  .stagger-horizontal-3 {
+    @apply animate-in fade-in slide-in-from-left-2 duration-400 ease-out fill-mode-backwards delay-100;
+  }
+
+  .stagger-horizontal-4 {
+    @apply animate-in fade-in slide-in-from-left-2 duration-400 ease-out fill-mode-backwards delay-125;
+  }
+
+  .stagger-horizontal-5 {
+    @apply animate-in fade-in slide-in-from-left-2 duration-400 ease-out fill-mode-backwards delay-150;
+  }
+
+  /* Scale stagger animations for special elements */
+  .stagger-scale-1 {
+    @apply animate-in fade-in zoom-in-95 duration-500 ease-out fill-mode-backwards delay-100;
+  }
+
+  .stagger-scale-2 {
+    @apply animate-in fade-in zoom-in-95 duration-500 ease-out fill-mode-backwards delay-200;
+  }
+
+  .stagger-scale-3 {
+    @apply animate-in fade-in zoom-in-95 duration-500 ease-out fill-mode-backwards delay-300;
+  }
+}
